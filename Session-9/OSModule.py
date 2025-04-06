@@ -1,7 +1,7 @@
 import os
 import shutil
 
-path="D:\\"
+path="D:\\" if os.name =="nt" else "/mnt/d"
 
 
 total,used,free= shutil.disk_usage(path)
