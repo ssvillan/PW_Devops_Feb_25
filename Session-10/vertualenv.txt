@@ -1,0 +1,25 @@
+
+Step:1 Create Virtual environment
+----------------------------------------------------------------------------
+to create vertual environment run the below command
+> python -m venv myenv
+---it will create new folder with all the new python installed in it
+
+Step:2 Activate Virtual environment
+----------------------------------------------------------------------------
+
+myenv\Scripts\activate
+--> you will se (myenv) at the start of your terminal line
+
+
+Step:3 install packages in the Vertual Environment
+------------------------------------------------------------------------------
+
+--> pip install requests
+
+
+
+Step:4 Deactivate Virtual Environment
+------------------------------------------------------------------------------
+
+--> deactivate
