@@ -1,0 +1,5 @@
+Scenario:
+create a script that:
+    1. Parses system Logs
+    2. Create a backup file if an error is found
+    3. Notifies you via email
