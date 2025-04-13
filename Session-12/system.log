@@ -3,3 +3,8 @@ INFO: user login successfull
 ERROR: Disk space low
 INFO: Backup completed
 ERROR: Unable to connect to the database
+2025-04-13 16:21:05,028-INFO-System initialized
+2025-04-13 16:21:05,028-INFO-User login successful
+2025-04-13 16:21:05,029-ERROR-Running out of memory
+2025-04-13 16:21:05,029-WARNING-High Memory Usage
+2025-04-13 16:21:05,029-ERROR-Unable to connect to MONGO DB Database
