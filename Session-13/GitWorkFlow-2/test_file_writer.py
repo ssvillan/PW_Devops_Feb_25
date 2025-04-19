@@ -8,6 +8,6 @@ def test_write_to_file();
 
     assert os.path.exists(test_filename),"File was not created"
 
-    with open(test_filename,"r") as f:
+    with open(test_filename,"r") as f
         content= f.read()
         assert content == test_content,"File content do not match"
