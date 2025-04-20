@@ -1,0 +1,49 @@
+name: Node.js CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm ci
+      - name: Run Test 
+        run : npm test
+
+      - name: Package build output as ZIP
+        run : |
+          mkdir output
+          cp -r src output/
+          cp package.json output
+          zip -r build.zip output
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-zip
+          path: build.zip 
+      - name: Notify Success via Email
+        if: success()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ganitniduniyanikunj10@gmail.com
+          password: zozs zxgm wofs fkqn
+          subject: "✅ CI Build Success - ${{ github.repository }}"
+          body: |
+            The build for ${{ github.repository }} on branch ${{ github.ref_name }} succeeded.
+            Commit: ${{ github.sha }}
+          to: ganitniduniyanikunj10@gmail.com
+          from: ganitniduniyanikunj10@gmail.com
+
+      
