@@ -107,3 +107,24 @@ pipeline {
         }
     }
 }
+
+WAP to create Simple Stagged Pipline Script using Jenkins with executing shell commands
+
+
+pipeline {
+    agent any
+
+    stages {
+        stage('preparation') {
+            steps {
+                echo 'This is Preparation stage'
+                sh ''' 
+			echo "cleaning previous files...."
+			rm -f output/
+			mkdir output
+		''''
+            }
+        }
+     }
+}
+
