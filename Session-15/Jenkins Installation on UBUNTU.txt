@@ -65,3 +65,45 @@ Creating Jenkins Freestyle Project
 
 
 > now goto your repository and make some changes and check the Jenkins dashboard. it will automatically build the project again
+
+
+
+here H/2 means---> H is representing some Hash, 2 represents 2 minutes
+		*---> Hours
+		*---> Day
+		*---> Month
+		*---> Every Day of Week
+
+
+INTEGRATE PLUGINS:
+
+> goto> amange jenkins> plugins> available plugins> install maven integration
+
+Create Simple Pipeline Project and below pipline:
+
+pipeline {
+    agent any
+
+    stages {
+        stage('build') {
+            steps {
+                echo 'This is Building stage'
+            }
+        }
+        stage('App Start') {
+            steps {
+                echo 'This is Application Starting Stage'
+            }
+        }
+        stage('App Testing') {
+            steps {
+                echo 'This is App testing stage'
+            }
+        }
+        stage('App Stop') {
+            steps {
+                echo 'This is end of all stages'
+            }
+        }
+    }
+}
