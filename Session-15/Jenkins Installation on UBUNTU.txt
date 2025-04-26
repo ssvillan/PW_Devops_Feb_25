@@ -24,7 +24,7 @@ Step:4 Jenkins Installation
 
 > sudo apt-get update
 
-> sudo apt-get install Jenkins
+> sudo apt-get install jenkins
 
 Step:5 Start Jenkins Service
 --------------------------------------
@@ -45,3 +45,23 @@ d.stop Jenkins service
 Step:6 Get Secret InitialAdminPassword
 ----------------------------------------
 > sudo cat /var/lib/Jenkins/secrets/initialAdminPassword
+
+
+
+***********************************************************************************************************************************************************************
+Creating Jenkins Freestyle Project
+***********************************************************************************************************************************************************************
+> goto>dashboard>create new job
+> select freestyle project>give description>
+> goto> source code management
+
+	GIT: select
+	URL:add your repository url
+	Branches to Build: *master /main
+	POLL SCM:
+		H/2 * * * *
+> click on apply and save
+> Build Project
+
+
+> now goto your repository and make some changes and check the Jenkins dashboard. it will automatically build the project again
