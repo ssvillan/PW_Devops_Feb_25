@@ -1,0 +1,47 @@
+Link: https://www.jenkins.io/doc/book/installing/linux/
+
+Step:1 Update the System:
+---------------------------------------
+> sudo apt update
+> sudo apt upgrade -y
+
+Step:2 install java
+---------------------------------------
+> sudo apt install openjdk-17-jdk -y
+
+Step:3 check the java-version
+---------------------------------------
+> java --version
+
+Step:4 Jenkins Installation
+---------------------------------------
+>sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+
+> echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+> sudo apt-get update
+
+> sudo apt-get install Jenkins
+
+Step:5 Start Jenkins Service
+--------------------------------------
+a. enable Jenkins 
+> sudo systemctl enable jenkins
+
+b. start the Jenkins service
+> sudo systemctl start jenkins
+
+c. get the status of Jenkins
+> sudo systemctl status jenkins
+
+d.stop Jenkins service
+> sudo systemctl stop jenkins
+
+
+
+Step:6 Get Secret InitialAdminPassword
+----------------------------------------
+> sudo cat /var/lib/Jenkins/secrets/initialAdminPassword
