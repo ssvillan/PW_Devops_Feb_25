@@ -1,0 +1,6 @@
+1. create a new file math_utils.py with a function multiply(a,b)
+2. write  test in test_math_util.py to check
+    1. positive number
+    2. zero
+    3. Negative number
+3. Ru the test using pytest
