@@ -1,0 +1,10 @@
+Task:Write Google Search Automation using selenium
+follow this steps:
+    1. instatiate webdriver
+    2. open google chome
+    3. find element name or id for searchBar
+    4. provide search value: OpenAI Chat GPT
+    5. click on search button 
+    6. get the title of chat GPT
+    7. quite the driver
+    

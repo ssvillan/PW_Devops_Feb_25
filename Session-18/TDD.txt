@@ -1,0 +1,6 @@
+What is TDD?
+Test-Driven Development is a software development process where:
+    1. you write the test first(it will fail at first).
+    2. then you write just enough code to make the test pass
+    3. finally you refractor the code for clarity and efficiency
+it follows a Red---> Green---->Refractor Cycle

@@ -1,0 +1,4 @@
+- pytest-cov is a plugin for pytest that measures code coverage of your python test
+-it tells you that what percentage of your code is tested- and which lines were or weren't executed during testing.
+- to install the plugin
+pip install pytest-cov
