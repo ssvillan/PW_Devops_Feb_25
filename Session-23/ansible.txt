@@ -1,0 +1,31 @@
+Step:1 create aws ubuntu instance and try connecting it with aws cli
+
+Step:2 Installing ansible in wsl
+
+a. install wsl 
+	> wsl --install
+b. update the machine
+	> sudo apt update
+c. Install Ansible
+	> sudo apt install ansible -y
+d. Check Ansible Version
+	> ansible --version
+e. create Playbook.yaml file in any of the drive
+
+
+playbook.yaml
+------------------------------------------------
+---
+- name: Test Ansible Playbook
+  hosts: localhost
+
+  tasks:
+  - name: Print Simple Message
+    debug:
+      msg: "Hello Ansible if Working"
+     
+------------------------------------------------
+once the playbook.yaml file is prepared move to that folder and open the wsl there.
+
+> ansible-playbook playbook.yaml
+
