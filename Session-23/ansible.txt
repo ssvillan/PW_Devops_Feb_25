@@ -29,3 +29,12 @@ once the playbook.yaml file is prepared move to that folder and open the wsl the
 
 > ansible-playbook playbook.yaml
 
+
+
+
+Step:1 create inventory.yaml file
+Step:2 Create Docker.yaml file
+
+Step:3 Check the Hosts:
+	> ansible all --list-hosts -i inventory.yaml
+this will give you no . of active hosts
