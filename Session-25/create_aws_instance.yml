@@ -28,3 +28,4 @@
     - name: Print Public IP
       debug:
         msg: "Public IP: {{ ec2.instances[0].public_ip_address }}"
+       # msg: "Instance ID: {{ ec2.instances[0].instance_id }}"

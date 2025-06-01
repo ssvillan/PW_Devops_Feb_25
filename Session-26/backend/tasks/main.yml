@@ -1,0 +1,27 @@
+- name: Install Python3, pip, and venv
+  apt:
+    name:
+      - python3
+      - python3-pip
+      - python3-venv
+    state: present
+    update_cache: yes
+
+- name: Create a virtual environment
+  command: python3 -m venv /opt/venv
+  args:
+    creates: /opt/venv/bin/activate
+
+- name: Install Flask inside virtualenv
+  command: /opt/venv/bin/pip install flask
+
+- name: Copy backend app
+  copy:
+    src: app.py
+    dest: /opt/app.py
+    mode: '0755'
+
+- name: Run backend app in background using virtualenv (not production-ready)
+  shell: nohup /opt/venv/bin/python /opt/app.py &
+  args:
+    creates: /tmp/app_started

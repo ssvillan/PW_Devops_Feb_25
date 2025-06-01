@@ -1,0 +1,37 @@
+Ansible Roles
+-----------------------------------
+1. roles plays an inportant role to simpplify the production of aws using Ansible
+2. it divides the complex creation of playbooks into small and easy stuctured playbooks
+3. to generate a role in Ansible
+> ansible-galaxy init <name_of_your_role>
+
+once the command is executed it will generate multiple files
+
+role/
+-----backend
+|    |
+|    |-----tasks
+|            |
+|            |----main.yml
+|
+|----frontend
+|    |
+|    |
+|    |------tasks
+|            |
+|            |-----main.yml
+|
+|------------site.yml (Main Playbook File)
+
+1. write code in backend/tasks/main.yml
+2. write code in frontend/tasks/main.yml
+3. copy paste the .pem Key Here
+4. Create Inventory file
+5. craete and write the code in site.yml file
+
+run:
+sudo ansible-playbook -i inventory.yml site.yml
+
+6. goto > aws> instance> security> security group> edit inbound group rule> add custom tcp port 5000
+7. copy public ip add  from aws ec2 instance> goto browser and paste + enter
+8. goto > another tab of browser> ipaddress:5000
