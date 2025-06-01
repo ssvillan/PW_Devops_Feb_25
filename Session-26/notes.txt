@@ -35,3 +35,6 @@ sudo ansible-playbook -i inventory.yml site.yml
 6. goto > aws> instance> security> security group> edit inbound group rule> add custom tcp port 5000
 7. copy public ip add  from aws ec2 instance> goto browser and paste + enter
 8. goto > another tab of browser> ipaddress:5000
+
+Task:
+Create another role to generate aws ec2- ubuntu instance with help of role

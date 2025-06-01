@@ -1,8 +1,20 @@
 ---
-- name: Setup Frontend and Backend
-  hosts: all
-  become: yes
+- name: Launch EC2 instance
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  
+  vars_files:
+    - vars.yml
+  roles:
+    - create_instance
 
+- name: Configure EC2 (Frontend+ backend)
+  hosts: tag_Environment_Dev
+  become: yes
+  remote_user: ubuntu
+  vars:
+    ansible_ssh_private_key_file: "~/.ssh/{{ key_name }}.pem"
   roles:
     - Frontend
     - Backend

@@ -1,0 +1,8 @@
+---
+- name: Setup Frontend and Backend
+  hosts: all
+  become: yes
+
+  roles:
+    - Frontend
+    - Backend
