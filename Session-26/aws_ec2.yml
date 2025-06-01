@@ -1,10 +1,11 @@
-plugin: amazon.aws.aws.ec2
+plugin: amazon.aws.aws_ec2
 regions:
-  - us-east-1
-keyed_groups:
-  - prefix: tag
-    key: Environment
-hostnames:
-  - public_ip_address
+  - us-east-1  # Change this to match your EC2 region
 filters:
   instance-state-name: running
+hostnames:
+  - public-ip-address
+keyed_groups:
+  - key: tags.Environment
+    prefix: tag
+    separator: _
