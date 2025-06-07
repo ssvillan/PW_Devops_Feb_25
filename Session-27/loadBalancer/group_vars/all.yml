@@ -1,3 +1,3 @@
 aws_region: us-east-1
-aws_access_key: AKIA24WEXQMJF2JEFSQS
-aws_secret_key: oVgJLlPZb4+m0qtiXs9rNGsLkxY6KgTgQfhNLs0Q
+aws_access_key: your_access_key
+aws_secret_key: your_secret_key
