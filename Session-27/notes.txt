@@ -1,0 +1,7 @@
+Create Limit in Ansible Playbook
+
+Step-1 Create two aws ubuntu instance
+using given inventory file
+
+Step-2 Use any of the host to limit the installation
+> sudo ansible-playbook -i inventory_jenkins jenkins.yml --limit "aws1"
