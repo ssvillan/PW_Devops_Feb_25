@@ -1,0 +1,30 @@
+- name: Get running EC2 instances by Name and Environment tag
+  amazon.aws.ec2_instance_info:
+    filters:
+      "tag:Environment": Dev
+      "tag:Name": ubuntu-ansible-instance-2
+      instance-state-name: running
+    region: "{{ aws_region }}"
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+  register: ec2_info
+
+- name: Fail if no EC2 found
+  fail:
+    msg: "No EC2 instances found"
+  when: ec2_info.instances | length == 0
+
+- name: Create Target Group
+  community.aws.elb_target_group:
+    name: web-target-group
+    protocol: HTTP
+    port: 80
+    vpc_id: "{{ ec2_info.instances[0].vpc_id }}"
+    target_type: instance
+    health_check_protocol: HTTP
+    health_check_path: /
+    state: present                          # ✅ REQUIRED
+    region: "{{ aws_region }}"
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+  register: target_group

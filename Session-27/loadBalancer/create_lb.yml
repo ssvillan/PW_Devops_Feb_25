@@ -1,0 +1,5 @@
+- name: Configure ALB for Existing Instance
+  hosts: localhost
+  gather_facts: false
+  roles:
+    - create_lb

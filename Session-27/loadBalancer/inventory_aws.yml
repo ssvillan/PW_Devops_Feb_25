@@ -1,0 +1,12 @@
+plugin: amazon.aws.aws.ec2
+regions:
+  - "{{ aws_region }}"
+
+filters:
+  tag:Name: webserver
+  instance-state-name: running
+hostnames:
+  - public-ip-address
+keyed_groups:
+  - key: tags.name
+    prefex: tag
