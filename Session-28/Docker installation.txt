@@ -42,3 +42,55 @@ STEP:4 RUN THE CONTAINER IN DETAHC MODE
 
 goto> browser> localhost:80 
 you will get docker.io/tutorial page
+
+
+STEP:5 STOP THE CONTAINER
+-----------------------------------------------------
+> sudo docker stop <name of container>
+
+
+STEP:6 REMOVE CONTAINER
+-----------------------------------------------------
+> sudo docker rm name_of_container
+
+> suod docker rm -f name_of_container
+
+STEP:7 REMOVE IMAGES
+-----------------------------------------------------
+> sudo docker rmi <name_of_image>
+
+
+
+************************************************************************************
+EXERCISE:1 PULL THE READY IMAGES AVAILABLE FROM DOCKER REGISTRY
+************************************************************************************
+> sudo docker pull ubuntu
+> sudo docker pull mysql
+> sudo docker pull mysql:5.7
+
+
+
+************************************************************************************
+EXERCISE: OULL CUSTOME IMAGES (GIT HUB)
+************************************************************************************
+> git clone https://github.com/Nikunj-Java/docker_master.git
+> ls
+> cd docker_master
+
+
+step:1 prepare image in docker container
+> sudo docker build -t myimge .   (. is mendatory)
+
+step:2 check the images
+> sudo docker images
+
+step:3 run the container
+> sudo docker run -d --name mycontainer -p 80:80 myimage
+
+step:4 check the container
+> sudo docker container ls
+
+step:5 open in browser
+> localhost:80  
+(if not working in normal browser, open it with incognito window)
+
