@@ -71,7 +71,7 @@ EXERCISE:1 PULL THE READY IMAGES AVAILABLE FROM DOCKER REGISTRY
 
 
 ************************************************************************************
-EXERCISE: OULL CUSTOME IMAGES (GIT HUB)
+EXERCISE:2 PULL CUSTOME IMAGES (GIT HUB)
 ************************************************************************************
 > git clone https://github.com/Nikunj-Java/docker_master.git
 > ls
@@ -93,4 +93,16 @@ step:4 check the container
 step:5 open in browser
 > localhost:80  
 (if not working in normal browser, open it with incognito window)
+
+
+************************************************************************************
+EXERCISE:3 PUSH THE IMAGES IN DOCKER HUB
+************************************************************************************
+> sudo docker tag myimage nikunj0510/myimage
+> sudo docker login
+> username:
+> password:    or onetime code enter it and activate
+> sudo docker push nikunj0510/myimage
+
+
 
