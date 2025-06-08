@@ -21,3 +21,24 @@ link:https://docs.docker.com/engine/install/ubuntu/
 To check Docker Version
 ___________________________________________________
 > docker --version
+
+STEP:1 PULL THE IMAGE
+----------------------------------------------------
+> sudo docker pull docker/getting-started
+
+STEP:2 RUN THE CONTAINER WITH SPECIFIC PORT NUMBER
+-----------------------------------------------------
+> sudo docker run -p 8080:8080 docker/getting-started
+
+STEP:3 RUNNING STATUS OF CONTAINER
+-----------------------------------------------------
+> sudo docker ps -a
+
+STEP:4 RUN THE CONTAINER IN DETAHC MODE
+-----------------------------------------------------
+> sudo docker run -d -p 8080:8080 docker/getting-started
+
+> sudo docker ps -a
+
+goto> browser> localhost:80 
+you will get docker.io/tutorial page
