@@ -69,16 +69,13 @@ step:1 prepare image in docker container
 step:2 check the images
 > sudo docker images
 
-step:3 run the container
-> sudo docker run -d --name mycontainer -p 80:80 myimage
-
 > curl localhost:80
 
 or goto>aws>publicipv4add> browser> ip_add:80
 
 STEP:3 SCALE THE DOCKER CONTAINER  ON DOCKER SWARM
 ---------------------------------------------------
-
+> sudo docker service create -p 80:80 --name myservice myimge
 > sudo docker service scale myservice=3
 > sudo docker service ls
 > sudo docker service ps myservice 
