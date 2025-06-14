@@ -1,0 +1,28 @@
+********************************************************************************
+EXERCISE: 4 CREATING MYSQL DATABASE IN DOCKER CONTAINER
+********************************************************************************
+
+> sudo docker pull mysql
+> sudo docker images
+> sudo docker run --name my-app-db -e MY_ROOT_PASSWORD=password -d -p 3306:3306 MySQL
+
+install MySQL
+---------------
+> sudo apt update
+> sudo apt install mysql-client
+> mysql --version
+
+> hostname -I
+	: 172.28.70.174
+
+> mysql -u root -h <your_public_ip_address> -P 3306 -p
+
+
+ if everything is ok, you will be able to mysql tag opened here in docker
+now, you can create the databased and tables as per your need
+
+
+Task:
+1. Goto> AWS> Create aws ubuntu ec2 instance>
+2. goto> network settings and open 3306 port> choose 0.0.0.0/0
+then use all the commands of Excercise 4
