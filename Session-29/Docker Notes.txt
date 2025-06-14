@@ -27,3 +27,59 @@ Task:
 1. Goto> AWS> Create instance in aws>  ubuntu ec2 instance>
 2. goto> network settings and open 3306 port> choose 0.0.0.0/0
 then use all the commands of Excercise 4
+
+*******************************************************************************
+EXERCISE: 5 DOCKER SWARM
+*******************************************************************************
+- DOCKER SWARM is an orchestration management tool that runs on Docker Application
+- it helps end-users in creating and deploying a cluster of docker nodes
+- each node of a docker swarm is a docker daemon and all interacts using DOCKER API
+- if one of the container fails we can use the swarm to correct that failure
+- it can reschedule containers on node failures
+- manages multiple containers running on node failures
+
+-------------------------------------------------------------------------------
+set the permissions:
+
+> sudo chmod 666 /var/run/docker.sock
+
+STEP:1 INITIATE DOCKER SWARM
+-------------------------------------------
+> sudo docker swarm init
+
+output: Swarm initialized: current node (uz3sga75pap9xg5rkh4ll7im1) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-0lz9yqubh3ilw0i6cl040mctrje90n8y221vinbzbbjrnul8rh-7z3wdwfbecp4liltg9n8s3ysn 172.31.26.94:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+
+
+STEP:2 CREATE SERVICE IN THIS DOCKER SWARM
+-------------------------------------------
+> git clone https://github.com/Nikunj-Java/docker_master.git
+> ls
+> cd docker_master
+
+
+step:1 prepare image in docker container
+> sudo docker build -t myimage .   (. is mendatory)
+
+step:2 check the images
+> sudo docker images
+
+step:3 run the container
+> sudo docker run -d --name mycontainer -p 80:80 myimage
+
+> curl localhost:80
+
+or goto>aws>publicipv4add> browser> ip_add:80
+
+STEP:3 SCALE THE DOCKER CONTAINER  ON DOCKER SWARM
+---------------------------------------------------
+
+> sudo docker service scale myservice=3
+> sudo docker service ls
+> sudo docker service ps myservice 
+
