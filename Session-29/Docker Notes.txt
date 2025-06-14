@@ -12,8 +12,8 @@ install MySQL
 > sudo apt install mysql-client
 > mysql --version
 
-> hostname -I
-	: 172.28.70.174
+
+       local_ip_address: 127.0.0.1
 or AWS public ip Address: 3.88.70.216
 
 > mysql -u root -h 3.88.70.216 -P 3306 -p
