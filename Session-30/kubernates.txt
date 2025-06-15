@@ -33,3 +33,11 @@ Start the cluster
 Get The Running Pods
 -------------------------
 > minikube kubectl -- get pods -A
+
+Get the Nodes
+-------------------------
+> kubectl get nodes
+
+to get the pods under some name-space
+-------------------------------------
+> kubectl get pods -n kube-system
