@@ -1,20 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frontend</title>
+  <title>Frontend</title>
 </head>
 <body>
+  <h1>Hello from Frontend</h1>
+  <div id="message"></div>
 
-    <h1>Hello From Frontend</h1>
-    <div id="message"></div>
-    <script>
-        fetch('http://localhost:5000/api/message')
-        .then(res=>res.json())
-        .then(data=>{
-            document.getElementById('message').innerText= data.message;
-        });
-    </script>
+  <script>
+    fetch('http://localhost:5000/api/message')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('message').innerText = data.message;
+      });
+  </script>
 </body>
 </html>

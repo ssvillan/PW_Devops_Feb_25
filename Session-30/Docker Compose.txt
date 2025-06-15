@@ -16,3 +16,12 @@ Myproject
 
 ___________________________________________________________________________________________________
 
+step:1 install docker compose
+> sudo apt install socker-compose
+Step:2 Create The App With Given Folder Sturture
+
+Step:3 run the docker-compose 
+> sudo docker-compose up --build
+
+Step:4 donw the docker-compose
+> sudo docker-compose down
