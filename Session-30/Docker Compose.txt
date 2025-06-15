@@ -1,0 +1,18 @@
+- if you want to communicate containers then they must be run under one network
+- docker compose is a tool which is used to define and manage multi-container Docker application
+let's create application
+___________________________________________________________________________________________________
+
+Myproject
+|
+|-----backend
+|	|-------app.py
+|	|-------requirements.txt
+|	|-------Dockerfile
+|-----frontend
+|	|-------index.html
+|	|-------Dockerfile
+|-----docker-compose.yml
+
+___________________________________________________________________________________________________
+
