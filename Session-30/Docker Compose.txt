@@ -25,3 +25,7 @@ Step:3 run the docker-compose
 
 Step:4 donw the docker-compose
 > sudo docker-compose down
+
+Step:5 Test the API 
+> http://localhost:5000/api/message
+> http://localhost:8080/
