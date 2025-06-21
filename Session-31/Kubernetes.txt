@@ -62,3 +62,30 @@ output:
 Output: 
 http://127.0.0.1:43635
 ❗  Because you are using a Docker driver on linux, the terminal needs to be open to run it.
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exercise:2 Using ConfigMap in Kubernetes
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+- it will inject the configuration into pods must contains some important information like apiversion,kind,data
+
+
+Goal: Serve a custom HTML File in a Nginx container using ConfigMap
+
+step:1 Create configmap.yml File  (Available in Folder)
+step:2 Apply the configMap File
+> kubectl aaply -f configMap.yml
+
+Step:3 Create A Deployment using the ConfigMap (Available in Folder)
+Step:4 Apply th Deployment
+> kubectl apply -f deployment.yml
+
+Step:5 Expose it with a service
+> kubectl expose deployment nginx-deploy --port=80 --type=NodePort
+
+Step:6 Get The url
+> minikube service my-nginx --url
+Output: 
+http://127.0.0.1:43635
+❗  Because you are using a Docker driver on linux, the terminal needs to be open to run it.
