@@ -1,0 +1,64 @@
+What is Kubernetes?
+-----------------------------------------
+- it was developed by Go-Langugage by Google
+- it consist 8 letters in between Kubernetes as a result it is often konws as K8S
+    -Run Application in a container
+    - manage deployments
+    - Scale apps up or down
+    - Handle Networking, storage, and Load Balancing
+
+Terms used in K8S:
+----------------------------------------------------------
+1. Pod: Smallest unit in kebernetes --it will run your container
+2. Deployment: Manages pods -- help in updates, scaling,restarts
+3. ConfigMap: stores non-sensitive app config(link .env)
+4. Secret: Store sensitive data like passwords
+5. ingress: Routes the traffic from outside into your service
+6. PVC: Percistent Storage for your Application
+
+How to Set up Kubernetes cluster locally??
+----------------------------------------------------------
+Step:1 Install the following
+-----------------------------
+1. kubectl
+2. minikube
+
+------------------------------
+Step:2 Start the Minikube
+------------------------------
+> minikube start
+
+-------------------------------
+Step:3 Check the Status
+-------------------------------
+> kubectl get nodes
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Exercise:1 Deploy a Simple Application
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+A. CREATE A Deployment
+
+> kubectl create deployment my-nginx --image=nginx
+
+    output: deployment.apps/my-nginx created
+
+B. Check the Status
+> kubectl get pods
+    ______________________________________________________________
+    |output:                                                      |              
+    |NAME                        READY   STATUS    RESTARTS   AGE |
+    |my-nginx-5b584c864b-mqhtw   1/1     Running   0          89s |   
+    |_____________________________________________________________|
+once the status is running we can proceed to the next part
+
+C. Expose it with a service
+
+> kubectl expose deployment my-nginx --port=80 --type=NodePort
+output:
+    service/my-nginx exposed
+
+    Note: This will create a service that maps a random high port on your localmachine
+> minikube service my-nginx --url
+Output: 
+http://127.0.0.1:43635
+❗  Because you are using a Docker driver on linux, the terminal needs to be open to run it.
