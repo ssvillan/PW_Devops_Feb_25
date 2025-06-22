@@ -22,4 +22,12 @@ Step:2 Run the Below command
         - kubectl apply -f replicaset.yml
         - kubectl get replicaset
         - kubectl get pods
-        
+
+********************Scaling**************************
+> kubectl scale replicaset my-replicaset --replicas=5
+> kubectl get replicaset
+
+********************Scale Down***********************
+> kubectl scale replicaset my-replicaset --replicas=2
+
+you can edit the no of replicas in file as well and apply or directly use --replicas and give th no of replicas to scale up or down
