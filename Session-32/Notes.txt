@@ -31,3 +31,46 @@ Step:2 Run the Below command
 > kubectl scale replicaset my-replicaset --replicas=2
 
 you can edit the no of replicas in file as well and apply or directly use --replicas and give th no of replicas to scale up or down
+
+Replicas alo maintain no fo pods based on the no of replicas that means if you manually deletes the pod replicaset will recreate the another pod to maintain th no of replicas.
+
+> kubectk delete pod <pod-name>
+> kubectl get pods (you will see that the newly created pod)
+> kubectl delete replicaset my-replicaset
+
+********************************************************************************
+StatefulSet
+*******************************************************************************
+- it is a k8s workload API object which is actually used to manage stateful applications
+- Maintains Stable Network: POD is having unique name
+- Ordered Deployment and Scaling: pods starts in sequence based on defination
+- Persistent Storage: Each pod retains its data evem after recheduled
+- Stable pod Names: like myapp-0, myapp-1,myapp-2
+
+
+When to use StatefulSet?
+------------------------
+
+-- Distributed System: Kafka, Zookepper
+-- Databases: MySQL, PostGreSQL, mongoDB
+
+
+*******************Example*****************
+Deploy MySQL Database using StatefulSet
+
+1. Creaye Mysql.yml for creating Headless Service
+2. Create PVC (each pod in statefulset will get their own PVC)-- mysql-pvc.yml
+3. Create Statfulset insdie that we will create pods (no of replicas and Volumes)
+
+PVC:
+it known as Persistent Volume Claim: A request for storage by a user specified size,access mode, and storage class(SSD,HDD ,Cloud Storage)
+
+Run the Below Commands after creating the file present inside StatefulSet
+> kubectl apply -f mysql.yml
+> kubectl apply -f myswl-pvc.yml
+> kubectl apply -f mysql-stateful.yml
+> kubectl get statefulset
+> kubectl get pods (see the sequence and names of pods)
+> kubectl get pvc (check the name of volume)
+
+The Above same procedure you need to use if you want to do using nginx
