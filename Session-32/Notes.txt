@@ -1,0 +1,25 @@
+Replica Set
+--------------------------------------------------
+- it is specifying number of pods replicas which are running all the times 
+- if any pod fails then it will recreate in replicaset
+
+Deployment
+---------------------------------------------------
+- it provides all controller updates and all the rollback feature
+- if any pod fails or any container fails it cam restart automatically.
+
+
+********************Create POD**********************
+step:1 Create pod.yml file sand save it
+step:2 Run The Below command
+    - kubectl apply -f pod.yml
+    - kubectl get pods
+    - kubectl describe pod nginx
+
+********************Replica Set**********************
+Step:1 Craete replicaset.yml file .add mentioned code
+Step:2 Run the Below command
+        - kubectl apply -f replicaset.yml
+        - kubectl get replicaset
+        - kubectl get pods
+        
