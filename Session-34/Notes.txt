@@ -1,0 +1,47 @@
+Folder Structure of Terraform
+------------------------------------------------------------------------------------
+
+main.tf 
+---------
+    - starting point of Terraform configuration
+    - we can define resources and module calls
+
+Variable.tf
+------------
+    - create variable declartion
+    - each variable can have type, name, default, description
+
+Output.tf
+-----------
+    - contains output definations
+    - (public Ip,resource ID, DNS, Private Ip)
+terrform.tfvars
+---------------
+    - contains default values for local testing
+    - add values for variables declared inside variable.tf file
+
+providers.tf
+---------------
+    - configuration of cloud providers
+
+backend.tf
+---------------
+    - store state configuration
+    - if you want to use remote backends for that we can configure this file
+    - for use of s3 bucket or Azure Blobs etlc...
+
+modules/:  (module folder)
+    add resources terrform modules and each submodules have
+
+    sub module: 
+        main.tf
+        variable.tf
+        output.tf
+Environment folder
+    environment/:
+        add environment specific values
+        terrform.tfvar using some configuration
+
+        dev/terrform.tfvars  (variable for developement)
+        staging/terrform.tfvars (variables for ftesting)
+        prod/terrform.tfvar (Variables for production setup)
