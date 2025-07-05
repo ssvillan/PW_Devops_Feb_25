@@ -112,3 +112,13 @@ link: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/instal
 > echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 > sudo apt update
 > sudo apt-get install terraform
+
+8. Running Terraform
+----------------------------------
+create new folder and create file with name "main.tf"
+add the given code attached here
+
+open >wsl> execute the command
+> terraform init
+> terraform plan
+> terraform apply
