@@ -1,0 +1,5 @@
+✅ Task: Create CloudWatch Alarm for an S3 Bucket Using Terraform
+🎯 Goal:
+Create an S3 bucket
+Enable bucket-level CloudWatch metrics
+Create a CloudWatch Alarm when, for example, the number of 4xx errors exceeds a threshold
