@@ -27,7 +27,7 @@ EOF
 echo "✅ backend.tf created using bucket: $BUCKET_NAME"
 
 # Step 4: Re-initialize with S3 backend
-terraform init -migrate-state -reconfigure
+terraform init 
 
 # Step 5: Apply again if needed
 terraform apply -auto-approve
