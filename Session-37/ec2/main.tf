@@ -58,6 +58,32 @@ resource "aws_instance" "web" {
     associate_public_ip_address = true
     vpc_security_group_ids = [aws_security_group.ec2_sg.id]
     //iam_instance_profile= aws_iam_instance_profile.ec2_profile.name
+    user_data = <<-EOF
+    #!/bin/bash
+    sudo yum install -y httpd amazon-cloudwatch-agent
+    echo "Hello From server ${count.index+1}"> /var/www/html/index.html
+    sudo systemctl start httpd
+    sudo systemctl enable httpd
+    cat <<EOC > /opt/aws/amazon-cloudwatch-agent/bin/config.json
+    {
+      "logs":{
+        "logs_collected":{
+          "files":{
+            "collect_list":{
+              "file_path":"/var/log/messages",
+              "log_group_name":"/ec2/web/messages",
+              "log_stream_name":"{instance_id}"
+            }
+          }
+        }
+      }
+    }
+    EOC
+    /opt/aws/amazon-cloudwatch-aget/bin/amazon-cloudwatch-agent-cli \
+    -a fetch-config -m ec2 -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json -s
+    EOF
+
+    
     tags = {
       Name="web-server-${count.index+1}"   }
   
