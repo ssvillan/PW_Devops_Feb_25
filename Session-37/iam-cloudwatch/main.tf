@@ -49,7 +49,7 @@ resource "aws_s3_bucket_policy" "policy_read" {
             }
             "Action"="s3:PutObject",
             "Resource"="${aws_s3_bucket.alb_logs.arn}/*"
-            "Conditions"={
+            "Condition"={
                 StringEquals={
                     "s3:x-amz-acl"="bucket-owner-full-control"
                 }
