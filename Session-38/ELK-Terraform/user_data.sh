@@ -1,43 +1,41 @@
 #!/bin/bash
-apt-get update
-apt-get install -y apt-transport-https curl gnupg openjdk-11-jdk wget
 
-# adding elastic GPG key and repo
-#link:
+# Update & install packages
+apt-get update -y
+apt-get install -y docker.io docker-compose
 
-curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elastic.gpg
-echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+# Enable Docker service
+systemctl enable docker
+systemctl start docker
 
-apt-get update
+# Create working directory
+mkdir -p /opt/elk
+cd /opt/elk
 
-#install elastic search
-apt install -y elasticsearch
-systemctl enable elasticsearch
-systemctl start elasticsearch
+# Create docker-compose.yml
+cat <<EOF > docker-compose.yml
+version: '3'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.10
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
 
-#install logstash
-apt-get install -y logstash
-cat <<EOF > /etc/logstash/conf.d/logstash-simple.conf
-input{
-    tcp{
-        port=> 5044
-        codec=> json
-    }
-}
-output{
-    stdout{}
-    elasticsearch{
-        hosts=>["http://localhost:9200"]
-        index=> "logs"
-    }
-}
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.17.10
+    ports:
+      - "5044:5044"
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.17.10
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - "5601:5601"
 EOF
-systemctl enable logstash
-systemctl start logstash
 
-#installing KIBANA
-apt-get install -y kibana
-echo "server.host: \"0.0.0.0\"" >> /etc/kibana/kibana.yml
-echo "elasticsearch.hosts:[\"http://localhost:9200\"]" >> /etc/kibana/kibana.yml
-systemctl enable kibana
-systemctl start kibana
+# Start ELK stack
+docker-compose up -d

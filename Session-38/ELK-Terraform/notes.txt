@@ -1,0 +1,11 @@
+key generation
+----------------------------------------------------
+> ssh-keygen -t rsa -b 4096 -C "nikunj@gmail.com
+
+----------------------------------------------------
+open powershell after the ip adrdess of an instance is ready
+> ssh -i ~/.ssh/id_rsa ubuntu@ipaddress
+> sudo docker ps 
+> goto > browser> ipaddress: 9200    // for elastic search
+> goto > browser> ipaddress: 5601   // elk kibana
+
