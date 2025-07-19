@@ -1,0 +1,41 @@
+in this tutorial we will learn how to launch Prometheus and Grafana using Terraform and AWS Ec2 Instance
+Step:1 Create prometheus/.prometheus.yml file
+
+Step:2 Create docker-compose.yml file
+
+Step:3 Create main.tf file
+
+Note: while using key
+
+# Key Pair
+resource "aws_key_pair" "deployer" {
+  key_name   = "gf-key"
+  public_key = file("/mnt/c/Users/NEW/.ssh/id_rsa.pub")
+}
+
+if key is note prepared , youo need to prepare it, if key already exist error coming into the picture change the name of the key
+
+Step: 4 run Terraform
+> terrform init
+> terraform apply -auto-aprove
+
+Step:5  check the Outputs
+
+Outputs:
+grafana_url = "http://3.91.47.25:3000"
+prometheus_url = "http://3.91.47.25:9090"
+
+Step:6 open grafana: http://3.91.47.25:3000
+> login with initial credentials
+    - username= admin
+    - password= admin
+> reset the password
+> on the dashboard> click the grafana icon on left side
+    > DATA SOURCES> click on Prometheus> give the name as prometheus
+    > enter the url: http://3.91.47.25:9090
+    > click on save and test
+    output: 
+    Successfully queried the Prometheus API.
+    Next, you can start to visualize data by building a dashboard, or by querying data in the Explore view.
+
+Now you can create your own dashbord here
