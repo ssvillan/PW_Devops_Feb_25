@@ -1,0 +1,5 @@
+goto>vscode>powerhell>
+
+> ssh -i ~/.ssh/id_rsa ubuntu@<ec2_public_ip>
+> they will ask to add fingerprint > yes
+> 
