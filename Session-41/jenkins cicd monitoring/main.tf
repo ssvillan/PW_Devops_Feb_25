@@ -75,11 +75,14 @@ resource "aws_security_group" "jenkins_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
+resource "aws_key_pair" "deployer" {
+    key_name = "myjenkins-key"
+    public_key = file("/mnt/c/Users/NEW/.ssh/id_rsa.pub")
+}
 resource "aws_instance" "jenkins_server" {
-  ami           = "ami-0c7217cdde317cfec" # Ubuntu AMI
+  ami           = "ami-08a6efd148b1f7504" # Ubuntu AMI
   instance_type = "t2.medium"
-  key_name      = "my-key"
+  key_name = aws_key_pair.deployer.key_name
   vpc_security_group_ids = [aws_security_group.jenkins_sg.id]
   iam_instance_profile   = aws_iam_instance_profile.jenkins_profile.name
 
